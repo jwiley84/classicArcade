@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, HttpResponse
 import json
 
 # Create your views here.
-def index(request):
-    print "FFS, WORK DAMN YOU"
-    return render(request, 'scoreKeeper/index.html')
+# def index(request):
+#     print "FFS, WORK DAMN YOU"
+    # return render(request, 'scoreKeeper/index.html')
 
 def receiver(request):
     # print "I saw this"
