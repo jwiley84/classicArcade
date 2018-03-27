@@ -1,18 +1,22 @@
 from django.shortcuts import render, redirect, HttpResponse
-import json
+import json, urllib
+
 
 # Create your views here.
-# def index(request):
-#     print "FFS, WORK DAMN YOU"
-    # return render(request, 'scoreKeeper/index.html')
-
+def index(request):
+    return render(request, 'scoreKeeper/index.html')
+ 
 def receiver(request):
-    # print "I saw this"
-    # data.request.get_json()
-    # results = ""
+    if request.is_ajax():
+        print "Almost Yay!"
+        if request.method == 'POST':
+            print "YAY!"
+            rawData = json.dumps(request.body)
+            strScore = rawData.split("=") #should return "score", "###"
+            # print strScore[1][:-1]
+            score = int(strScore[1][:-1])
+            # print type(score)
+    return redirect('/')
 
-    # for item in data:
-    #     results += str(item['make']) + '\n'
-    # print results
-    print "this button works"
+def playGame(request):
     return render(request, 'scoreKeeper/breakoutGame.html')
