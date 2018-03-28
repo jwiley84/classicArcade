@@ -142,7 +142,7 @@
                 headers: { "X-CSRFToken": getCookie("csrftoken") }
                 });
             $.ajax({
-                url: "/receiver",
+                url: "/games/receiver",
                 data: playerScore,                
                 type: 'POST',
                 success: function (response) {
@@ -240,7 +240,7 @@
             requestAnimationFrame(draw);
         }
         else {
-            var scoreJSON = JSON.stringify(playerScore)
+            // var scoreJSON = JSON.stringify(playerScore)
             doWork();
         }
         }

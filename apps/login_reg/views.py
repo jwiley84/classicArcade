@@ -13,12 +13,12 @@ def registration(request):
     request.session['user_id'] = results[1].id
     request.session['name'] = results[1].name
     print "******* You're registered! ******"
-    return redirect('/success')
+    return redirect('/user/success')
   
   else:
     for err in results[1]:
       messages.error(request, err)
-    return redirect('/')
+    return redirect('/user')
     
 def login(request):
   results = User.objects.login_validation(request.POST)
@@ -26,11 +26,11 @@ def login(request):
   if results[0]:
     request.session['user_id'] = results[1].id 
     print "******* logged in yo! ******"
-    return redirect('/success')
+    return redirect('/user/success')
   else:
     for err in results[1]:
       messages.error(request, err)
-  return redirect('/')
+  return redirect('/user')
 
 def logout(request):
   request.session.flush()

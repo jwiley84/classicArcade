@@ -6,14 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Orbitron|Play|Press+Start+2P" rel="stylesheet">
     {% load static %}
     <script src="{% static 'scoreKeeper/js/main.js' %}"></script>
     <title>Document</title>
+    <style>
+        h1 {
+            color: white;
+            font-family: "Press Start 2P", Arial;
+            text-align: center;
+        }
+        body {
+            background-color: black;
+        }
+        .gameBox {
+            border: 1px solid white;
+            height: 300px;
+            width: 300px;
+            margin: 20px;
+            background-color: grey;
+            vertical-align: top;
+            display: inline-block;
+        }
+        #wrapper {
+            width: 950px;
+            margin: 0 auto;
+        }
+        .nav {
+            width: 28%;
+            margin: 20px 2%;
+            height:  50px;
+        }
+    </style>
 </head>
 
 <body>
-
-    <a href="games/playGame" id="theButton">Click Me!</a>
+    <div id="wrapper">
+        <h1>Classic Arcade!</h1>
+    <div id="navBar">
+        <button class="nav"><a href="/games/playGame" id="theButton">Play Random Game</a></button>
+        <button class="nav"><a href="#" id="theButton">Metrics</a></button>
+        <button class="nav"><a href="/user" id="theButton">Login | Register</a></button>
+    </div>
+    <div class="gameBox"><p>Pacman</p></div>
+    <a href="/games/1"><div class="gameBox"><p>Breakout</p></div></a>
+    <div class="gameBox"><p>TBD</p></div>
+    <div class="gameBox"><p>TBD</p></div>
+    </div>
+    <!-- a href='/Books/book/{{ book.id }}/'>{{ book.title }} -->
     
 </body>
 
