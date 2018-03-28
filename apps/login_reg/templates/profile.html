@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Profile</title>
+</head>
+<body style="background-color:black">
+    <a style="color:blue" href="/games">Now go play the games!</a>
+    <br>
+    <a style="color:blue" href="/games/highScores">Retrun to High Scores</a>
+    <br>
+    <a style="color:blue" href="/user/logout">Logout</a>
+
+    <br><br>
+    <h1 style="color:#49fb35">Username: {{user.username}}</h1>
+    <h2 style="color:white">Name: {{user.name}}</h2>
+    <h3 style="color:white">Location: {{user.location}}</h3>
+    <h3 style="color:white">Joined: {{user.created_at}}</h3>
+    <br><br>
+    <table cellspacing="25">
+        <thead>
+            <th style="color:blue">Game</th>
+            <th style="color:blue">Score</th>
+        </thead>
+        {% for t in top %}
+        <tbody>
+            <tr>
+                <td style="color:#49fb35">{{t.game.title}}</td>
+                <td style="color:#49fb35">{{t.totalScore}}</td>
+            </tr>
+        </tbody>
+            {% endfor %}
+
+
+</body>
+</html>

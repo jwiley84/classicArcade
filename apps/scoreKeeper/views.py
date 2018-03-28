@@ -54,7 +54,16 @@ def playGame(request, id):
     if (gID == 3):
         return render(request, 'scoreKeeper/pacmanGame.html')
 
-
+def highScores(request):
+    if 'user_id' not in request.session:
+        return redirect ('/user')
+    breakout = Game.objects.filter(title='breakout')
+    top = Score.objects.filter(game=breakout).order_by('-totalScore')[:10]
+    context = {
+        'top' : top,
+        }
+    return render(request, 'scoreKeeper/highScores.html', context)
+ 
 
     ## TODO ##
     #session data from player

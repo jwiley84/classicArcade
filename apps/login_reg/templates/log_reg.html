@@ -13,7 +13,7 @@
     <p>{{ m }}</p>
     {% endfor %} {% endif %}
     <h1>Registration</h1>
-    <form action="reg" method="post">
+    <form action="/user/reg" method="post">
         {% csrf_token %}
         <p>Name:
             <input type="text" name="name"> </p>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import User
+from ..scoreKeeper.models import *
 import bcrypt
 
 def index(request):
@@ -35,12 +36,24 @@ def login(request):
 def logout(request):
   request.session.flush()
   print "++++++++ You logged out ++++++++++"
-  return redirect('/')
+  return redirect('/user')
 
 def success(request):
-    if 'user_id' not in request.session:
-        return redirect ('/')
-    context = {
-    'user' : User.objects.get(id=request.session['user_id']),
+  if 'user_id' not in request.session:
+      return redirect ('/user')
+  context = {
+    'user' : User.objects.get(id=request.session['user_id']),    
+    'top' : Score.objects.filter(player=request.session['user_id']).order_by('-totalScore')[:10]
     }
-    return render(request, 'success.html', context)
+  return render(request, 'success.html', context)
+
+def profile(request, id):
+  if 'user_id' not in request.session:
+      return redirect ('/user')
+  user = User.objects.get(id=id)
+  context ={
+    'user' : user,
+    'top' : Score.objects.filter(player=user).order_by('-totalScore')[:10]
+  }
+  return render(request, 'profile.html', context)
+

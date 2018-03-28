@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>High Scores</title>
+</head>
+<body style="background-color:black">
+    <a style="color:blue" href="/games">Now go play the games!</a>
+    <a style="color:blue" href="/user/logout">Logout</a>
+    <h1 style="color:#49fb35">HIGH SCORES</h1>
+        <h2a style="color:blue">BREAKOUT</h2>
+        <table cellspacing="20">
+            <thead>
+                <th style="color:white">Score</th>
+                <th style="color:white">Username</th>
+            </thead>
+            {% for t in top%}
+            <tbody>
+                <tr>
+                    <td style="color:#49fb35">{{t.totalScore}}</td>
+                    <td style="color:#49fb35"><a href="/user/profile/{{t.player.id}}">{{t.player.username}}</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+
+            <h2 style="color:blue">BREAKOUT</h2>
+            <table cellspacing="20">
+                <thead>
+                    <th style="color:white">Game</th>
+                    <th style="color:white">Score</th>
+                </thead>
+                {% for user in top10 %}
+                <tbody>
+                    <tr>
+                        <td style="color:#49fb35">{{me.game}}</td>
+                        <td style="color:#49fb35">{{me.score}}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+</body>
+</html>
