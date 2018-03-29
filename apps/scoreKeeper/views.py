@@ -2,7 +2,11 @@ from django.shortcuts import render, redirect, HttpResponse
 import json, urllib
 from ..login_reg.models import User
 from .models import *
-
+import plotly
+import plotly.plotly as py
+import plotly.tools as tls
+import plotly.graph_objs as go
+from plotly.graph_objs import *
 
 # Create your views here.
 def index(request):
@@ -54,10 +58,58 @@ def playGame(request, id):
     if (gID == 3):
         return render(request, 'scoreKeeper/pacmanGame.html')
 
+def metrics(request) :
+    if 'user_id' in request.session :
+        games = Game.objects.all()
+        gamesArr = []
+        for game in games:
+            gamesArr.append(game.id)
+    
+        scoreDict = {} 
+        for i in range(1, len(gamesArr)):
+            query = Score.objects.filter(player = request.session['user_id'], game = i)
+            if query:
+                scoreDict[i] = query
 
+        gameNum = []
+        gameSet = []
+        gameScore = []
+        gameSubset = []
+        for key in scoreDict:
+            count = 0
+            print 'game ', key
+            for val in scoreDict[key]:
+                count += 1
+                gameNum.append(count)
+                gameScore.append(val.totalScore)
+            gameSubset.append(gameNum)
+            gameNum = []
+            gameSubset.append(gameScore)
+            gameScore = []
+            gameSet.append(gameSubset)
+            gameSubset = []
+        print "gameSet:" , gameSet
+        
+        
+    graphNo = 0
+    graphs = []
+    context = {
+        'graphs': graphs
+    }
+    for i in range(0, len(gameSet)):
+        graphNo += 1
+        user = request.session['user_id']
+        gameName = Game.objects.get(id=i+1).title
+        trace = go.Scatter(x = gameSet[i][0], y = gameSet[i][1])
+        data = [trace]
+        layout = go.Layout(title=gameName, width=800, height=640)
+        fig = go.Figure(data=data, layout=layout)
+        py.plot(data, filename='a-simple-plot.png', auto_open=False)
 
-    ## TODO ##
-    #session data from player
-    #make a player
-    #send session data with score and player info to db
+        graph = "scoreKeeper/" + str(user) + "-" + str(graphNo) + ".png"
+        graphs.append(graph)
+
+        py.image.save_as(fig, filename="apps/scoreKeeper/static/{}".format(graph))
+    
+    return render(request, 'scoreKeeper/metrics.html', context)
 

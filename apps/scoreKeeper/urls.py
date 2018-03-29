@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^receiver', views.receiver),
     url(r'^playGame', views.playGame),
     url(r'^(?P<id>\d+)', views.playGame), #display the particular game
+    url(r'^metrics$', views.metrics)
     ]
