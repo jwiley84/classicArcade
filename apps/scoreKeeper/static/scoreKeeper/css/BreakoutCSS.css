@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: rgb(2, 90, 2);
+}
+
+canvas {
+    background: rgba(0, 162, 0, 0.5);
+    display: block;
+    margin: 0 auto;
+    border: 5px solid black;
+    border-bottom: 5px solid transparent;
+}
+@font-face {
+    font-family: 'Press Start 2p';
+    src: url('https://fonts.googleapis.com/css?family=Orbitron|Play|Press+Start+2P');
+}
+.btn {
+    background-color: black;
+    color: green;
+    width: 200px;
+    font-size: 24px;
+    height: 50px;
+    margin: 20px auto;
+}
+#replay {
+    margin-left: 275px;
+    margin-right: 50px;
+}
+#wrapper {
+    /* width: 950px;
+    margin: 0 auto; */
+    width: 1000px;
+    margin: 20px auto;   
+    position: relative;
+}
+#rules {
+    position: absolute;
+    right:-30px;
+    top: 400px;
+    border: 5px solid blue;
+    box-shadow: 5px 5px powderblue;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    background:linear-gradient(to bottom right, black, black, grey, black);
+}
+h1 {
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    text-shadow: 5px 5px blue;
+    font-size: 48px;
+}

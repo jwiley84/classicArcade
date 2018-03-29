@@ -9,49 +9,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     {% load static %}
     <script src="{% static 'scoreKeeper/js/main.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'scoreKeeper/css/BreakoutCSS.css' %}">
     
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        body {
-            background-color: rgb(2, 90, 2);
-        }
 
-        canvas {
-            background: rgba(0, 162, 0, 0.5);
-            display: block;
-            margin: 0 auto;
-            border: 5px solid black;
-            border-bottom: 5px solid transparent;
-        }
-        @font-face {
-            font-family: 'Press Start 2p';
-            src: url('https://fonts.googleapis.com/css?family=Orbitron|Play|Press+Start+2P');
-        }
-        #replay {
-            background-color: black;
-            color: green;
-            width: 200px;
-            font-size: 24px;
-            height: 50px;
-            margin: 20px auto;
-        }
-        #wrapper {
-            width: 950px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
-        }
-    </style>
+
 </head>
 
+
 <body>
-    <div #wrapper><h1>Breakout!</h1>
-    <a href="/games/1"><button id="replay">Play Again!</button></a>
-    <a href="/games"><button id="replay">Home</button></a>
+    <div id="wrapper"><h1>Breakout!</h1>
+
+
+    <a href="/games/1"><button id="replay" class="btn">Play Again!</button></a>
+    <a href="/games"><button class="btn">Home</button></a>
+    <div id="rules">
+        <p>BreakOut Rules</p>
+        <h5>(Demo Edition)</h5>
+        <p>Press R-Arrow and L-Arrow to</p>
+        <p>move paddle to right and left.</p>
+    </div>
+
     <canvas id="bsCanvas" width="500" height="500"></canvas>
 </div>
     <script>
@@ -82,7 +59,7 @@
         //scoring
         var playerScore = {"score":0};
         //life system
-        var lives = 1;
+        var lives = 3;
         var gameOver = false;
 
         document.addEventListener("keydown", keyDownHandler, false);
@@ -186,8 +163,7 @@
                             console.log(playerScore['score'])
                             if(playerScore['score'] == brickRowCount*brickColCount) {
                                 gameOver = true;
-                                alert("YOU WIN, CONGRATULATIONS!");
-                                document.location.reload();
+                                alert("Thank you for playing the demo edition!")
                             }
                         }
                     }
@@ -237,8 +213,8 @@
                     else {
                         x = canvas.width/2;
                         y = canvas.height-30;
-                        dx = 2;
-                        dy = -2;
+                        dx = 5;
+                        dy = -5;
                         paddleX = (canvas.width - paddleWidth)/2;
                     }
                 } //else

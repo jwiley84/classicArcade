@@ -9,7 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Orbitron|Play|Press+Start+2P" rel="stylesheet"> {% load static %}
     <script src="{% static 'scoreKeeper/js/main.js' %}"></script>
-    <title>Document</title>
+    <title>Games!</title>
     <style>
         h1 {
             color: white;
@@ -24,10 +24,11 @@
         }
 
         .gameBox {
-            border: 1px solid white;
+            border: 5px double white;
+            border-radius: 20px;
             height: 300px;
             width: 300px;
-            margin: 20px;
+            margin: 25px 70px;
             background-color: grey;
             vertical-align: top;
             display: inline-block;
@@ -43,10 +44,11 @@
             margin: 20px 2%;
             height: 50px;
             font-family: "Orbitron", Arial;
-            background: radial-gradient(rgb(2, 2, 77), black);
+            background: radial-gradient(teal, black);
             /* color: white; */
             font-size: 24px;
             font-weight: bold;
+            border-radius: 5px;
             /* text-decoration: none; */
         }
 
@@ -71,10 +73,15 @@
             background-position: center;
             background-size: 100%;
             background-repeat: no-repeat;
+            background-color: rgba(255,255,255,0.5);
         }
 
         .comingSoonLogo {
-            background: url('{% static "/scoreKeeper/imgs/UC.png" %}')
+            background: url('{% static "/scoreKeeper/imgs/UC.png" %}');
+            /* background: url('{% static "/scoreKeeper/imgs/Tetris-logo.png" %}'); */
+            background-position: center;
+            background-size: 75%;
+            background-repeat: no-repeat;
         }
 
         h2 {
@@ -82,16 +89,25 @@
             font-size: 48px;
             text-align: center;
             color: rgb(225, 245, 42);
+            margin-top: 33%;
+            text-shadow: 5px 5px black;
+            font-size: 55px;
         }
         #games {
             margin: 0 auto;
         }
-
+        h4 {
+            color: red;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
     </style>
 </head>
 
 <body>
     <div id="wrapper">
+        <a href="/user/logout"><h4>Logout</h4></a>
         <h1>Classic Arcade!</h1>
         <div id="navBar">
             <button class="nav"><a href="/games/highScores" id="theButton">High Scores</a></button>
@@ -102,10 +118,10 @@
 
 
         <div id="games">
-            <div id='tetrisLogo' class="gameBox"><a href="/games/2"></a></div>
-            <div id='breakoutLogo' class="gameBox transbox"><a href="/games/1"><h2>Breakout</h2></a></div>
-            <div class="gameBox comingSoonLogo"><h2>Coming Soon!</h2></div>
-            <div class="gameBox comingSoonLogo"><h2>Coming Soon!</h2></>div>
+            <a href="/games/2"><div id='tetrisLogo' class="gameBox"></div></a>
+            <a href="/games/1"><div id='breakoutLogo' class="gameBox transbox"><h2>Breakout</h2></div></a>
+            <div class="gameBox comingSoonLogo"></div>
+            <div class="gameBox comingSoonLogo"></>div>
         </div>
     </div>
 
