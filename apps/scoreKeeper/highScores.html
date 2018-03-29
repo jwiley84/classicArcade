@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'scoreKeeper/style.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>High Scores</title>
+</head>
+<body>
+    <a href="/games">Now go play the games!</a>
+    <a href="/user/logout">Logout</a>
+    <h1>HIGH SCORES</h1>
+        <table cellspacing="20">
+            <thead>
+                <th>Score</th>
+                <th>Username</th>
+            </thead>
+            {% for t in top%}
+            <tbody>
+                <tr>
+                    <td>{{t.totalScore}}</td>
+                    <td><a href="/user/profile/{{t.player.id}}">{{t.player.username}}</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+
+            <h2>BREAKOUT</h2>
+            <table cellspacing="20">
+                <thead>
+                    <th>Game</th>
+                    <th>Score</th>
+                </thead>
+                {% for user in top10 %}
+                <tbody>
+                    <tr>
+                        <td>{{me.game}}</td>
+                        <td>{{me.score}}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+</body>
+</html>
