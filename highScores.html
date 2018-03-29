@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>High Scores</title>
+</head>
+
+<style>
+    fieldset {
+        font-size: 20px padding:25px;
+        width: 300px;
+        line-height: 1.8;
+        display: inline-block;
+        
+    }
+    legend{
+        margin:0 auto;
+    }
+</style>
+
+<body style="background-color:black">
+    <a style="color:blue" href="/games">Now go play the games!</a>
+    <a style="color:blue" href="/user/logout">Logout</a>
+
+    <h1 style="color:#49fb35">HIGH SCORES</h1>
+    <br>
+        <fieldset>
+            <legend><h2 style="color:blue">BREAKOUT</h2></legend>
+            <table cellspacing="20">
+                <thead>
+                    <th style="color:white">Score</th>
+                    <th style="color:white">Username</th>
+                </thead>
+                {% for b in topBO%}
+                <tbody>
+                    <tr>
+                        <td style="color:#49fb35">{{b.totalScore}}</td>
+                        <td style="color:#49fb35"><a href="/user/profile/{{b.player.id}}">{{b.player.username}}</a></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </fieldset>        
+        <fieldset>
+            <legend><h2 style="color:blue">TETRIS</h2></legend>
+            <table cellspacing="20">
+                <thead>
+                    <th style="color:white">Score</th>
+                    <th style="color:white">Username</th>
+                </thead>
+                {% for t in topT %}
+                <tbody>
+                    <tr>
+                        <td style="color:#49fb35">{{t.totalScore}}</td>
+                        <td style="color:#49fb35"><a href="/user/profile/{{t.player.id}}">{{t.player.username}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+                {% endfor %}
+</body>
+</html>
