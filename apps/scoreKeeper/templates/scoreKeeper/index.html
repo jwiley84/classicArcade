@@ -16,6 +16,7 @@
             color: white;
             font-family: "Press Start 2P", Arial;
             text-align: center;
+            font-size: 48px;
         }
         body {
             background-color: black;
@@ -37,6 +38,37 @@
             width: 28%;
             margin: 20px 2%;
             height:  50px;
+            font-family: "Orbitron", Arial;
+            background: radial-gradient(rgb(2, 2, 77), black);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        #navBar {
+            background: linear-gradient(to bottom, orange, beige, orange);
+            background-color: orange;
+            border: 1px solid rgb(223, 109, 109);
+            border-radius: 50px 1px 50px 1px;
+        }
+
+        #breakoutLogo {
+            background: url('{% static "/scoreKeeper/imgs/download.jpeg" %}');
+        }
+        #tetrisLogo {
+            background: url('{% static "/scoreKeeper/imgs/Tetris-logo.png" %}');
+            background-position: center; 
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .comingSoonLogo {
+            background: url('{% static "/scoreKeeper/imgs/UC.png" %}')
+        }
+        h2 {
+            font-family: "Orbitron", Arial;
+            font-size: 48px;
+            text-align: center;
+            color: rgb(225, 245, 42);
         }
     </style>
 </head>
@@ -49,12 +81,12 @@
         <button class="nav"><a href="#" id="theButton">Metrics</a></button>
         <button class="nav"><a href="/user" id="theButton">Login | Register</a></button>
     </div>
-    <div class="gameBox"><p>Pacman</p></div>
-    <a href="/games/1"><div class="gameBox"><p>Breakout</p></div></a>
-    <div class="gameBox"><p>TBD</p></div>
-    <div class="gameBox"><p>TBD</p></div>
+    <a href="/games/2"><div id='tetrisLogo' class="gameBox"></div></a>
+    <a href="/games/1"><div id='breakoutLogo' class="gameBox transbox"><h2>Breakout</h2></div></a>
+    <div class="gameBox comingSoonLogo"><h2>Coming Soon!</h2></>div>
+    <div class="gameBox comingSoonLogo"><h2>Coming Soon!</h2></>div>
     </div>
-    <!-- a href='/Books/book/{{ book.id }}/'>{{ book.title }} -->
+    
     
 </body>
 

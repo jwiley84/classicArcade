@@ -20,8 +20,10 @@ def receiver(request):
         if request.method == 'POST':
             # print "YAY!"
             rawData = json.dumps(request.body)
+            # print rawData
             strScore = rawData.split("=") #should return "score", "###"
-            # print strScore[1][:-1]
+            # print "strScore:", strScore
+            print strScore[1][:-1]
             score = int(strScore[1][:-1])
             print "score: " + str(score)
     if ('user_id') in request.session:
@@ -32,17 +34,8 @@ def receiver(request):
         }
         print scoreSet
         newScore = Score.objects.scoreCreator(scoreSet)
-    # print request.session['user_id']
+    print request.session['user_id']
     return redirect('/games')
-
-# def playBreakout(request):
-#     return render(request, 'scoreKeeper/breakoutGame.html')
-
-# def playTetris(request):
-#     return render(request, 'scoreKeeper/breakoutGame.html')
-
-# def playPacman(request):
-#     return render(request, 'scoreKeeper/breakoutGame.html')
     
 def playGame(request, id):
     request.session['game_id'] = Game.objects.get(id=id).id
@@ -57,7 +50,8 @@ def playGame(request, id):
 
 
     ## TODO ##
-    #session data from player
-    #make a player
-    #send session data with score and player info to db
+    #beautify
+    #fix the css on Breakout
+    #multiple levels for BO
+    #tetris
 
