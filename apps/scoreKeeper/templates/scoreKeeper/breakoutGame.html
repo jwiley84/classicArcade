@@ -15,25 +15,45 @@
             padding: 0;
             margin: 0;
         }
+        body {
+            background-color: rgb(2, 90, 2);
+        }
 
         canvas {
-            background: green;
+            background: rgba(0, 162, 0, 0.5);
             display: block;
             margin: 0 auto;
             border: 5px solid black;
             border-bottom: 5px solid transparent;
         }
         @font-face {
-            font-family: 'PressStart2p';
+            font-family: 'Press Start 2p';
             src: url('https://fonts.googleapis.com/css?family=Orbitron|Play|Press+Start+2P');
         }
-
+        #replay {
+            background-color: black;
+            color: green;
+            width: 200px;
+            font-size: 24px;
+            height: 50px;
+            margin: 20px auto;
+        }
+        #wrapper {
+            width: 950px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+        }
     </style>
 </head>
 
 <body>
+    <div #wrapper><h1>Breakout!</h1>
+    <a href="/games/1"><button id="replay">Play Again!</button></a>
+    <a href="/games"><button id="replay">Home</button></a>
     <canvas id="bsCanvas" width="500" height="500"></canvas>
-
+</div>
     <script>
         //base canvas
         var canvas = document.getElementById("bsCanvas");
@@ -47,8 +67,8 @@
         var paddleX = (canvas.width - paddleWidth) / 2;
         // var paddleY = canvas.height - 50
         //movement
-        var dx = 20;
-        var dy = -20;
+        var dx = 5;
+        var dy = -5;
         var leftDown = false;
         var rightDown = false;
         //bricks!
@@ -118,7 +138,7 @@
         function drawLives() {
             ctx.font = "30px Courier New";
             ctx.fillStyle = 'orange';
-            ctx.fillText("Lives: " + lives, canvas.width/3, 30)
+            ctx.fillText("Lives: " + lives, canvas.width/2, 30)
         }
         function drawBricks() {
             for (c = 0; c < brickColCount; c++) {
@@ -137,7 +157,7 @@
                 } //rows
             } //cols
         }
-        function doWork() {
+        function sendScore() {
             $.ajaxSetup({
                 headers: { "X-CSRFToken": getCookie("csrftoken") }
                 });
@@ -241,7 +261,7 @@
         }
         else {
             // var scoreJSON = JSON.stringify(playerScore)
-            doWork();
+            sendScore();
         }
         }
     draw();

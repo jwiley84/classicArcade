@@ -24,8 +24,10 @@ def receiver(request):
         if request.method == 'POST':
             # print "YAY!"
             rawData = json.dumps(request.body)
+            # print rawData
             strScore = rawData.split("=") #should return "score", "###"
-            # print strScore[1][:-1]
+            # print "strScore:", strScore
+            print strScore[1][:-1]
             score = int(strScore[1][:-1])
             print "score: " + str(score)
     if ('user_id') in request.session:
@@ -36,17 +38,8 @@ def receiver(request):
         }
         print scoreSet
         newScore = Score.objects.scoreCreator(scoreSet)
-    # print request.session['user_id']
+    print request.session['user_id']
     return redirect('/games')
-
-# def playBreakout(request):
-#     return render(request, 'scoreKeeper/breakoutGame.html')
-
-# def playTetris(request):
-#     return render(request, 'scoreKeeper/breakoutGame.html')
-
-# def playPacman(request):
-#     return render(request, 'scoreKeeper/breakoutGame.html')
     
 def playGame(request, id):
     request.session['game_id'] = Game.objects.get(id=id).id
@@ -112,4 +105,20 @@ def metrics(request) :
         py.image.save_as(fig, filename="apps/scoreKeeper/static/{}".format(graph))
     
     return render(request, 'scoreKeeper/metrics.html', context)
+def highScores(request):
+    if 'user_id' not in request.session:
+        return redirect ('/user')
+    breakout = Game.objects.filter(title='breakout')
+    top = Score.objects.filter(game=breakout).order_by('-totalScore')[:10]
+    context = {
+        'top' : top,
+        }
+    return render(request, 'scoreKeeper/highScores.html', context)
+ 
+
+    ## TODO ##
+    #beautify
+    #fix the css on Breakout
+    #multiple levels for BO
+    #tetris
 

@@ -4,15 +4,32 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Document</title>
+    <title>Success Page</title>
 </head>
 
-<body>
-    <a href="/logout">Logout</a>
+<body style="background-color:black">
+    <a style="color:blue" href="/user/logout">Logout</a>
     <br><br>
-    <h1>Welcome to Classic Arcade, {{user.username}}</h1>
-    <p>Successfully registered (or logged in)!</p>
-    <a href="/games">Now go play the games!</a>
+
+    <h1 style="color:white">Welcome to Classic Arcade, {{user.username}}</h1>
+    <h3><a style="color:blue" href="/games">Now go play the games!</a></h3>
+
+    <table cellspacing="25">
+        <thead>
+            <th style="color:white">Game</th>
+            <th style="color:white">Score</th>
+        </thead>
+            {% for t in top %}
+        <tbody>
+            <tr>
+                <td style="color:#49fb35">{{t.game.title}}</td>
+                <td style="color:#49fb35">{{t.totalScore}}</td>
+            </tr>
+        </tbody>
+            {% endfor %}
+
+
+    
 
 </body>
 
