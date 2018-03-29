@@ -1,0 +1,28 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color:black;
+}
+
+a {
+    color: blue;
+}
+
+h1 {
+    color: #49fb35;
+}
+
+h2 {
+    color:blue
+} 
+
+th {
+    color: white;
+}
+
+td {
+    color:#49fb35;
+}
