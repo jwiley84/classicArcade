@@ -48,8 +48,6 @@ def success(request):
   return render(request, 'success.html', context)
 
 def profile(request, id):
-  if 'user_id' not in request.session:
-      return redirect ('/user')
   user = User.objects.get(id=id)
   context ={
     'user' : user,

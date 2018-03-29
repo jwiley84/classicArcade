@@ -6,41 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
 
-<body>
+<style>
+fieldset { 
+    font-size: 20px
+    padding:25px; 
+    width:300px; 
+    line-height:1.8;}
+
+</style>
+</head>
+<body style="background-color:black">
     {% if messages %} {% for m in messages %}
     <p>{{ m }}</p>
     {% endfor %} {% endif %}
-    <h1>Registration</h1>
+    <fieldset class="fieldset-auto-width">
+    <h1 style="color:#49fb35">Registration</h1>
     <form action="/user/reg" method="post">
         {% csrf_token %}
-        <p>Name:
+        <p style="color:blue">Name:
             <input type="text" name="name"> </p>
-        <p>Username:
+        <p style="color:blue">Username:
             <input type="text" name="username"> </p>
-        <p>Location:
+        <p style="color:blue">Location:
             <input type="text" name="location"> </p>
-        <p>Email:
+        <p style="color:blue">Email:
             <input type="text" name="email">
         </p>
-        <p>Password:
+        <p style="color:blue">Password:
             <input type="password" name="password"> </p>
-        <p>Confirm Password:
+        <p style="color:blue">Confirm Password:
             <input type="password" name="confirm"> </p>
         <input type="submit" value="Register">
     </form>
-
-    <h1>Login</h1>
+    </fieldset>
+    <fieldset class="fieldset-auto-width">
+    <h1 style="color:blue">Login</h1>
     <form action="/user/login" method="post">
         {% csrf_token %}
-        <p>Email:
-            <input type="text" name="email"> </p>
-        <p>Password:
+        <p style="color:#49fb35">Email:
+            <input background="gold" type="text" name="email"> </p>
+        <p style="color:#49fb35">Password:
             <input type="password" name="password"> </p>
         <input type="submit" value="Login">
     </form>
-
+    </fieldset>
 </body>
 
 </html>

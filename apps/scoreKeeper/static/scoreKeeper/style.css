@@ -26,3 +26,15 @@ th {
 td {
     color:#49fb35;
 }
+
+fieldset {	
+    font-size: 20px; 
+    padding: 25px;
+    width: 300px;
+    line-height: 1.8;
+    display: inline-block;
+}
+    
+legend {
+    margin:0 auto;
+}

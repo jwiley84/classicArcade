@@ -13,28 +13,101 @@
     
     <style>
         body {
-            background-color: pink;
-            color: red;
+            background-color: #40e0d0;
+            color: 	#ffd700;
         }
 
-        /* canvas {
+        canvas {
             background-color: antiquewhite;
-            border: 2px solid red;
+            border: 2px solid 	#ffd700;
             margin: 0 auto;
-        } */
+            width: 241px;
+            display: inline-block;
+            position: relative;
+            left: 39%;
+        }
+
+        h1 {
+            font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-size: 70px;
+            
+        }
+        
+        h3 {
+            color: #ffd700;
+            text-align: center;
+        }
+
+        p{
+            margin: 10px;
+        }
+
+        @font-face {
+            font-family: 'Press Start 2p';
+            src: url('https://fonts.googleapis.com/css?family=Orbitron|Play|Press+Start+2P');
+        }
+        
+
+        #score {
+            text-align: center;
+            font-size: 50px;
+        }
 
         #wrapper {
             width: 1000px;
             margin: 0 auto;
         }
+
+        #instructions{
+            margin: 10px;
+            border: solid #ffd700 2px;
+            width: 240px;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            left: 39%;
+        }
+
+        #replay {
+            background-color: #e77a8a;
+            color: #40e0d0;
+            width: 200px;
+            font-size: 24px;
+            height: 50px;
+            margin: 10px;
+            display: inline-block;   
+        }
+        #buttonsContainer{
+            margin: 0 auto;
+            width: 450px;
+            display: block;
+        }
+        
     </style>
 </head>
 
 <body>
     <div id="wrapper">
-        <h1>Tetris-Good enough for now, but fix me!</h1>
+        <h1>Tetris!</h1>
         <div id="score"></div>
-        <canvas id="tetris" width=245 height=500></canvas>
+        <canvas id="tetris" width=241 height=500></canvas>
+        <div id="instructions">
+            <h3>Instructions: </h3>
+            <p>
+                <-- Left arrow: move piece left
+            </p>
+            <p>
+                --> Right arrow: move piece right
+            </p>
+            <p>
+                Down Arrow: speed up piece
+            </p>
+        </div>
+        <div id=buttonsContainer>
+            <a href="/games/2"><button id="replay">Play Again!</button></a>
+            <a href="/games"><button id="replay">Home</button></a>
+        </div>
         <script>
             const canvas = document.getElementById("tetris");
             const context = canvas.getContext('2d');
@@ -261,7 +334,7 @@
                 }
 
             function updateScore() {
-                document.getElementById('score').innerText = playerScore['score']
+                document.getElementById('score').innerText = "Score: " + playerScore['score']
             }
 
             function sendScore() {

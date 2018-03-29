@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
+    <link rel="stylesheet" href="{% static 'scoreKeeper/style.css' %}" media="screen" title="no title" charset="utf-8">
     <title>High Scores</title>
 </head>
-<body style="background-color:black">
-    <a style="color:blue" href="/games">Now go play the games!</a>
-    <a style="color:blue" href="/user/logout">Logout</a>
-    <h1 style="color:#49fb35">HIGH SCORES</h1>
-        <h2a style="color:blue">BREAKOUT</h2>
-        <table cellspacing="20">
+
+<body>
+    <a href="/games">Now go play the games!</a>
+    <a href="/user/logout">Logout</a>
+    <h1>HIGH SCORES</h1>
+    <br>
+    <fieldset>
+        <legend><h2>BREAKOUT</h2></legend>
+
+    <table cellspacing="20">
+        <thead>
+            <th>Score</th>
+            <th>Username</th>
+        </thead>
+        {% for b in topBO%}
+        <tbody>
+            <tr>
+                <td>{{b.totalScore}}</td>
+                <td><a href="/user/profile/{{b.player.id}}">{{b.player.username}}</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</fieldset>        
+<fieldset>
+    <legend><h2>TETRIS</h2></legend>
+            <table cellspacing="20">
             <thead>
-                <th style="color:white">Score</th>
-                <th style="color:white">Username</th>
+                <th>Game</th>
+                <th>Score</th>
             </thead>
-            {% for t in top%}
+            {% for t in topT %}
             <tbody>
                 <tr>
-                    <td style="color:#49fb35">{{t.totalScore}}</td>
-                    <td style="color:#49fb35"><a href="/user/profile/{{t.player.id}}">{{t.player.username}}</a></td>
+                    <td>{{t.totalScore}}</td>
+                    <td><a href="/user/profile/{{t.player.id}}">{{t.player.username}}</a></td>
                 </tr>
             </tbody>
+            </table>
             {% endfor %}
-
-            <h2 style="color:blue">BREAKOUT</h2>
-            <table cellspacing="20">
-                <thead>
-                    <th style="color:white">Game</th>
-                    <th style="color:white">Score</th>
-                </thead>
-                {% for user in top10 %}
-                <tbody>
-                    <tr>
-                        <td style="color:#49fb35">{{me.game}}</td>
-                        <td style="color:#49fb35">{{me.score}}</td>
-                    </tr>
-                </tbody>
-                {% endfor %}
 </body>
+
 </html>

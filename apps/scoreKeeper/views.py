@@ -106,12 +106,15 @@ def metrics(request) :
     
     return render(request, 'scoreKeeper/metrics.html', context)
 def highScores(request):
-    if 'user_id' not in request.session:
-        return redirect ('/user')
     breakout = Game.objects.filter(title='breakout')
-    top = Score.objects.filter(game=breakout).order_by('-totalScore')[:10]
+    tetris = Game.objects.filter(title='tetris')
+    topBO = Score.objects.filter(game=breakout).order_by('-totalScore')[:10]	
+    topT = Score.objects.filter(game=tetris).order_by('-totalScore')[:10]
+    		
+    
     context = {
-        'top' : top,
+        'topBO' : topBO,
+        'topT' : topT
         }
     return render(request, 'scoreKeeper/highScores.html', context)
  
