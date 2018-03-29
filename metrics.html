@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>metrics</title>
+    {% load static %}
+</head>
+<body>
+    <div>
+        {% if graphs %}
+            {% for graph in graphs %}
+                <img src="{% static graph %}">
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
