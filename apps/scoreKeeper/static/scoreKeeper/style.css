@@ -27,14 +27,38 @@ td {
     color:#49fb35;
 }
 
-fieldset {	
-    font-size: 20px; 
-    padding: 25px;
-    width: 300px;
-    line-height: 1.8;
-    display: inline-block;
-}
-    
 legend {
     margin:0 auto;
+}
+@font-face {
+    font-family: 'Press Start 2p';
+    src: url('https://fonts.googleapis.com/css?family=Orbitron|Play|Press+Start+2P');
+}
+h1 {
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+}
+.maxW {
+    font-size: 20px; 
+    padding: 25px;
+    width: 400px;
+    line-height: 1.8;
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top;
+}
+
+.btn {
+    height: 30px;
+    width: 200px;
+    border: 1px solid white;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 1px;
+}
+#wrapper {
+    margin: 20px;
+    padding: 20px;
 }
